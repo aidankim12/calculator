@@ -103,9 +103,18 @@ function addNumEventListener(element, text) {
 
 function addOperationEventListener(element, text, op_name) {
     element.addEventListener('click', () => {
-        screen.textContent += text;
-        firstNum = Number(currNum);
-        operation = op_name;
-        currNum = '';
+        if (operation.trim() === '') {
+            screen.textContent += text;
+            firstNum = Number(currNum);
+            operation = op_name;
+            currNum = '';
+        } else {
+            screen.textContent = '';
+            firstNum = 0;
+            secondNum = 0;
+            operation = '';
+            currNum = '';
+            alert('Only perform one operation at a time.');
+        }
     });
 }
